@@ -21,6 +21,7 @@ class Item(BaseModel):
 
 
 UPLOAD_DIR = Path() / 'uploads'
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 origins = ['*']
