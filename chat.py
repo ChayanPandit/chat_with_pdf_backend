@@ -1,4 +1,4 @@
-import streamlit as st
+# import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter, RecursiveCharacterTextSplitter
@@ -95,37 +95,37 @@ def handle_user_input(user_input, chat_history):
     return response['output_text']
     
 
-def main():
-    load_dotenv()
-    st.set_page_config(page_title="Q&A on PDFs",page_icon=":books:")
-    # st.write(css, unsafe_allow_html=True)
+# def main():
+#     load_dotenv()
+#     st.set_page_config(page_title="Q&A on PDFs",page_icon=":books:")
+#     # st.write(css, unsafe_allow_html=True)
     
-    if "conversation" not in st.session_state:
-        st.session_state.conversation = None
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
+#     if "conversation" not in st.session_state:
+#         st.session_state.conversation = None
+#     if "chat_history" not in st.session_state:
+#         st.session_state.chat_history = []
         
-    st.header("Q&A on PDFs :books:")
-    user_question = st.text_input("Ask a question about your documents:")
+#     st.header("Q&A on PDFs :books:")
+#     user_question = st.text_input("Ask a question about your documents:")
     
     
-    if user_question:
-        handle_user_input(user_question)
-    # else:
-        # st.write(user_template.replace("{{MSG}}","hello bot"), unsafe_allow_html=True)
-        # st.write(bot_template.replace("{{MSG}}","hello human"), unsafe_allow_html=True)
+#     if user_question:
+#         handle_user_input(user_question)
+#     # else:
+#         # st.write(user_template.replace("{{MSG}}","hello bot"), unsafe_allow_html=True)
+#         # st.write(bot_template.replace("{{MSG}}","hello human"), unsafe_allow_html=True)
     
     
-    with st.sidebar:
-        st.subheader("Your documents")
-        pdf_docs = st.file_uploader("Upload ypur PDFs here and click on 'Process'", accept_multiple_files=True)
-        if st.button("Process"):
-            with st.spinner("Processing..."):
-                raw_text = get_pdf_text(pdf_docs)
-                text_chunks = get_text_chunks(raw_text)
-                get_vector_store(text_chunks)
-                st.success("Done!")
+#     with st.sidebar:
+#         st.subheader("Your documents")
+#         pdf_docs = st.file_uploader("Upload ypur PDFs here and click on 'Process'", accept_multiple_files=True)
+#         if st.button("Process"):
+#             with st.spinner("Processing..."):
+#                 raw_text = get_pdf_text(pdf_docs)
+#                 text_chunks = get_text_chunks(raw_text)
+#                 get_vector_store(text_chunks)
+#                 st.success("Done!")
     
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
