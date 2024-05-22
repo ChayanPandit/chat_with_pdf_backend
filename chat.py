@@ -58,8 +58,9 @@ def get_vector_store(text_chunks):
 def get_conversation_chain_gemini():
 
     prompt_template = """
-    You are provided with some pdfs stored as 'context' ,and also the previous question-answer pairs with the user stored as 'chat history'.
-    The user will ask more questions: follow up or standalone. Refer the chat history to understand the follow up questions.
+    You are a question answer chat bot.
+    Ypu have been provided with some pdf stored in a variable: 'context' ,and also the previous question-answer pairs stored in a variable: 'chat history'.
+    The user will ask either follow up or standalone questions based on the pdf. Refer the chat history to understand the follow up questions.
     Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
     provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
     Context:\n {context}?\n
@@ -87,10 +88,8 @@ def handle_user_input(user_input, chat_history):
 
     chain = get_conversation_chain_gemini()
 
-    chat_history1 = chat_history
-    chat_history1.reverse()
     response = chain(
-        {"input_documents":docs, "chat_history":chat_history1, "question": user_input}
+        {"input_documents":docs, "chat_history":chat_history, "question": user_input}
         , return_only_outputs=False
         )
                 
