@@ -68,6 +68,6 @@ async def create_user_query(item: Item):
     answer = ''
     answer = handle_user_input(question, chat_history)
     
-    item.chat_history.insert(0,{'question':question,'answer': answer})
+    item.chat_history.append({'question':question,'answer': answer})
     
     return {"chat_history": item.chat_history}
